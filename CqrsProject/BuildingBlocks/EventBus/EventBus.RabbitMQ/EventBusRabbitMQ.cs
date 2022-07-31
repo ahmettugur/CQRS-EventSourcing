@@ -83,7 +83,7 @@ public class EventBusRabbitMQ : BaseEventBus
         var eventName = @event.GetType().Name;
         eventName = ProcessEventName(eventName);
 
-        _consumerChannel.ExchangeDeclare(exchange: EventBusConfig.DefaultTopicName, type: "direct");
+        _consumerChannel.ExchangeDeclare(exchange: EventBusConfig.DefaultTopicName, type: EventBusConfig.DefaultTopicType);
 
         var message = JsonConvert.SerializeObject(@event);
         var body = Encoding.UTF8.GetBytes(message);
@@ -155,7 +155,7 @@ public class EventBusRabbitMQ : BaseEventBus
         var channel = _persistentConnection.CreateModel();
 
         channel.ExchangeDeclare(exchange: EventBusConfig.DefaultTopicName,
-            type: "direct");
+            type: EventBusConfig.DefaultTopicType);
 
         return channel;
     }

@@ -11,6 +11,7 @@ namespace EventBus.RabbitMQ;
         public int ConnectionRetryCount { get; set; } = 5;
 
         public string DefaultTopicName { get; set; } = "EventBus";
+        public string DefaultTopicType { get; set; } = "direct";
 
         public string EventBusConnectionString { get; set; } = String.Empty;
 

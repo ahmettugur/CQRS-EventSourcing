@@ -58,6 +58,8 @@ public static class ApplicationRegistration
                 ConnectionRetryCount = 5,
                 SubscriberClientAppName = subscriberClientAppName,
                 EventBusType = EventBusType.RabbitMQ,
+                DefaultTopicName = "BankingAccount",
+                DefaultTopicType = "direct",
                 Connection = new ConnectionFactory()
                 {
                     HostName = hostName,
