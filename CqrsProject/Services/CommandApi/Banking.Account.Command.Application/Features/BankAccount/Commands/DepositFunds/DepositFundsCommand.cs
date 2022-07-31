@@ -4,6 +4,12 @@ namespace Banking.Account.Command.Application.Features.BankAccount.Commands.Depo
 
 public class DepositFundsCommand: IRequest<bool>
 {
-    public string Id { get; set; } = string.Empty;
-    public double Amount { get; set; }
+    public string Id { get;}
+    public double Amount { get;}
+    
+    public DepositFundsCommand(string id, double amount)
+    {
+        Id = id;
+        Amount = amount;
+    }
 }

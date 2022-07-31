@@ -4,8 +4,16 @@ namespace Banking.Account.Command.Application.Features.BankAccount.Commands.Open
 
 public class OpenAccountCommand: IRequest<bool>
 {
-    public string Id { get; set; } = string.Empty;
-    public string AccountHolder { get; set; } = string.Empty;
-    public string AccountType { get; set; } = string.Empty;
-    public double OpeningBalance { get; set; }
+    public string Id { get;}
+    public string AccountHolder { get; }
+    public string AccountType { get;  }
+    public double OpeningBalance { get; }
+
+    public OpenAccountCommand(string accountHolder, string accountType, double openingBalance)
+    {
+        Id = Guid.NewGuid().ToString();
+        AccountHolder = accountHolder;
+        AccountType = accountType;
+        OpeningBalance = openingBalance;
+    }
 }

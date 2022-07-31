@@ -23,10 +23,9 @@ public class BankAccountController : ControllerBase
     [HttpPost("OpenAccount", Name = "OpenAccount")]
     [ProducesResponseType((int) HttpStatusCode.OK)]
     [ProducesDefaultResponseType]
-    public async Task<IActionResult> OpenAccount([FromBody] OpenAccountCommand command)
+    public async Task<IActionResult> OpenAccount([FromBody] OpenAccountRequest request)
     {
-        var id = Guid.NewGuid().ToString();
-        command.Id = id;
+        var command = new OpenAccountCommand(request.AccountHolder,request.AccountType,request.OpeningBalance);
         var result = await _mediator.Send(command);
         return Ok(result);
     }
@@ -41,22 +40,22 @@ public class BankAccountController : ControllerBase
         return Ok(result);
     }
     
-    [HttpPut("DepositFund/{id}", Name = "DepositFund")]
+    [HttpPut("DepositFund", Name = "DepositFund")]
     [ProducesResponseType((int) HttpStatusCode.OK)]
     [ProducesDefaultResponseType]
-    public async Task<IActionResult> DepositFund(string id,[FromBody] DepositFundsCommand command)
+    public async Task<IActionResult> DepositFund([FromBody] DepositFundsRequest request)
     {
-        command.Id = id;
+        var command = new DepositFundsCommand(request.Id, request.Amount);
         var result = await _mediator.Send(command);
         return Ok(result);
     }
     
-    [HttpPut("WithDrawnFund/{id}", Name = "WithDrawnFund")]
+    [HttpPut("WithDrawnFund", Name = "WithDrawnFund")]
     [ProducesResponseType((int) HttpStatusCode.OK)]
     [ProducesDefaultResponseType]
-    public async Task<IActionResult> WithDrawnFund(string id,[FromBody] WithdrawFundsCommand command)
+    public async Task<IActionResult> WithDrawnFund([FromBody] WithdrawFundsRequest request)
     {
-        command.Id = id;
+        var command = new WithdrawFundsCommand(request.Id, request.Amount);
         var result = await _mediator.Send(command);
         return Ok(result);
     }
