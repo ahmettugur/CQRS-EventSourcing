@@ -1,5 +1,5 @@
 # CQRS-EventSourcing
-CQRS &amp; Event Sourcing  with Kfka, RabbitMQ, MongoDB and .NET6
+CQRS &amp; Event Sourcing  with Kafka, RabbitMQ, MongoDB and .NET7
 
 ## Prerequisites
 
