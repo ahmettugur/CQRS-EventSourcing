@@ -15,7 +15,7 @@ namespace EventBus.RabbitMQ;
 
         public string EventBusConnectionString { get; set; } = String.Empty;
 
-        public string SubscriberClientAppName { get; set; } = String.Empty;
+        public string? SubscriberClientAppName { get; set; } = String.Empty;
 
         public string EventNamePrefix { get; set; } = String.Empty;
 
