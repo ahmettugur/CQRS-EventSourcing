@@ -20,7 +20,10 @@ public static class ApplicationRegistration
     {
         services.Configure<MongoSettings>(configuration.GetSection("MongoSettings"));
 
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddMediatR(cfg => 
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
         var brokerType = configuration.GetSection("BrokerType").Value;
         if (brokerType == "Kafka")
         {

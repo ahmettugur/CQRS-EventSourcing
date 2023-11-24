@@ -34,7 +34,10 @@ public static class ApplicationRegistration
         });
         services.AddSingleton<IHostedService, KafkaConsumer>();
 
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
         services.AddTransient<AccountOpenedEventHandler>();
         services.AddTransient<AccountClosedEventHandler>();
         services.AddTransient<FundsDepositedEventHandler>();
@@ -70,8 +73,11 @@ public static class ApplicationRegistration
 
             return EventBusFactory.Create(config, sp);
         });
-        
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
         services.AddTransient<AccountOpenedEventHandler>();
         services.AddTransient<AccountClosedEventHandler>();
         services.AddTransient<FundsDepositedEventHandler>();

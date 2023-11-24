@@ -17,7 +17,7 @@ public class DepositFundsCommandHandler: IRequestHandler<DepositFundsCommand>
         _logger = logger;
     }
     
-    public async Task<Unit> Handle(DepositFundsCommand request, CancellationToken cancellationToken)
+    public async Task Handle(DepositFundsCommand request, CancellationToken cancellationToken)
     {
         var bankAccount = new BankAccount
         {
@@ -25,6 +25,5 @@ public class DepositFundsCommandHandler: IRequestHandler<DepositFundsCommand>
             Balance = request.Balance
         };
         await _bankAccountRepository.DepositBankAccountIdentifier(bankAccount);
-        return Unit.Value;
     }
 }

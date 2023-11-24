@@ -16,10 +16,8 @@ public class CloseAccountCommandHandler: IRequestHandler<CloseAccountCommand>
         _logger = logger;
     }
     
-    public async Task<Unit> Handle(CloseAccountCommand request, CancellationToken cancellationToken)
+    public async Task Handle(CloseAccountCommand request, CancellationToken cancellationToken)
     {
         await _bankAccountRepository.DeleteByIdentifier(request.Identifier);
-        
-        return Unit.Value;
     }
 }

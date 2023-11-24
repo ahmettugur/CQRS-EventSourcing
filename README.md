@@ -5,7 +5,7 @@ CQRS &amp; Event Sourcing  with Kafka, RabbitMQ, MongoDB and .NET7
 
 ```bash
 Docker (For Kafka, Kafka Drop, RabbitMQ, Sql Server)
-Asp.Net 6
+Asp.Net 8
 Visual Studio 2022 or Rider or Visual Studio Code
 
 ```

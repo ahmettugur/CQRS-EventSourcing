@@ -17,7 +17,7 @@ public class WithdrawFundsCommandHandler: IRequestHandler<WithdrawFundsCommand>
         _logger = logger;
     }
 
-    public async Task<Unit> Handle(WithdrawFundsCommand request, CancellationToken cancellationToken)
+    public async Task Handle(WithdrawFundsCommand request, CancellationToken cancellationToken)
     {
         var bankAccount = new BankAccount
         {
@@ -25,7 +25,5 @@ public class WithdrawFundsCommandHandler: IRequestHandler<WithdrawFundsCommand>
             Balance = request.Balance
         };
         await _bankAccountRepository.WithDrawnBankAccountIdentifier(bankAccount);
-        
-        return Unit.Value;
     }
 }
